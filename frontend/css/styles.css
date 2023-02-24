@@ -48,19 +48,23 @@ footer {
   /* width: calc(25% - 20px); */
   /* padding: 6px; */
   border-radius: 8px;
+  margin-bottom : 50px;
   cursor: pointer;
   -webkit-transition: 0.2s all;
   overflow: hidden;
 
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: center; */
+  text-align: center;
 }
 .tile img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  object-fit: cover;
+  height :450px;
   -webkit-transition: 0.2s all;
   /* -webkit-filter: brightness(70%); */
 }
@@ -74,6 +78,10 @@ footer {
   z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
+  align-items: center;
+  bottom: 0px;
+  left:50%;
+  transform:translateX(-50%);
 }
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
