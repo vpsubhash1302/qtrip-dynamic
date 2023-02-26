@@ -5,6 +5,9 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
+  const urlPara = new URLSearchParams(search);
+  const param = urlPara.get('city');
+  return param;
 
 }
 
@@ -12,6 +15,16 @@ function getCityFromURL(search) {
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
+  
+  const url = 'http://13.235.181.195:8082/adventures?city='+city;
+  try{
+    const response = await fetch(url);
+    const users = await response.json();
+    return users;
+   }catch(error){
+     console.error("Error Found",error);
+     return null; 
+   }
 
 }
 
@@ -19,6 +32,8 @@ async function fetchAdventures(city) {
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
+  
+
 
 }
 

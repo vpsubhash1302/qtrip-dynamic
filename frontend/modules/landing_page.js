@@ -15,11 +15,11 @@ async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
   try{
-    const response = await fetch('http://65.2.88.151:8082/cities');
+    const response = await fetch('http://13.235.181.195:8082/cities');
     const users = await response.json();
     return users;
-   }catch(err){
-     console.error("Error Found",err);
+   }catch(error){
+     console.error("Error Found",error);
      return null; 
    }
 
@@ -39,8 +39,6 @@ function addCityToDOM(id, city, description, image) {
   imagee.height =100;
   imagee.width = 100;
   division.appendChild(imagee);
-  
-
   const text = document.createElement("div");
   text.setAttribute("class","tile-text");
   const h2 = document.createElement("h2");
