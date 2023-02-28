@@ -15,7 +15,7 @@ async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
   try{
-    const response = await fetch('http://13.235.181.195:8082/cities');
+    const response = await fetch('http://15.206.106.116:8082/cities');
     const users = await response.json();
     return users;
    }catch(error){
@@ -30,15 +30,24 @@ function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
   // 1. Populate the City details and insert those details into the DOM
   const cont = document.getElementById('data');
+  
   const division = document.createElement("div");
   division.setAttribute("class","tile col-lg-3 col-md-6 col-sm-12");
+
+  let link =document.createElement("a");
+  link.setAttribute("href","pages/adventures/?city="+id);
   division.setAttribute("id",id);
+
+  let divtile = document.createElement("div");
+  divtile.setAttribute("class","tile");
+
   const imagee = document.createElement("img");
   imagee.setAttribute("src",image);
   // image.setAttribute("class","tile");
   imagee.height =100;
   imagee.width = 100;
-  division.appendChild(imagee);
+  divtile.appendChild(imagee);
+
   const text = document.createElement("div");
   text.setAttribute("class","tile-text");
   const h2 = document.createElement("h2");
@@ -50,15 +59,11 @@ function addCityToDOM(id, city, description, image) {
   text.append(p);
 
   
-  division.appendChild(text);
+  divtile.appendChild(text);
+  link.appendChild(divtile);
+
+  division.appendChild(link);
   cont.appendChild(division);
-
-
-
-  
-
-
-
 
 }
 

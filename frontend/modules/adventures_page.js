@@ -7,6 +7,7 @@ function getCityFromURL(search) {
   // 1. Extract the city id from the URL's Query Param and return it
   const urlPara = new URLSearchParams(search);
   const param = urlPara.get('city');
+  console.log(param);
   return param;
 
 }
@@ -16,7 +17,7 @@ async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
   
-  const url = 'http://13.235.181.195:8082/adventures?city='+city;
+  const url = 'http://15.206.106.116:8082/adventures?city='+city;
   try{
     const response = await fetch(url);
     const users = await response.json();
@@ -32,6 +33,76 @@ async function fetchAdventures(city) {
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
+  let row = document.getElementById("data");
+
+  for(let i of adventures){
+    let division = document.createElement("div");
+    division.setAttribute("class","col-lg-3 col-md-6 col-sm-12 mb-3");
+
+    let link =document.createElement("a");
+    link.setAttribute("href","detail/?adventure="+i.id);
+    link.setAttribute("id",i.id);
+
+    let advcard = document.createElement("div");
+    advcard.setAttribute("class","card activity-card");
+
+    let advimg = document.createElement("img");
+    advimg.setAttribute("src",i.image);
+
+    let advcategory = document.createElement("div");
+    advcategory.setAttribute("class","category-banner");
+    advcategory.textContent = i.category;
+
+    let advtext = document.createElement("div");
+    advtext.setAttribute("class","col-md-12 mt-3");
+
+    let advtext1 = document.createElement("div");
+    advtext1.setAttribute("class","d-flex justify-content-between p-2");
+
+    const p1 = document.createElement("p");
+    p1.textContent = i.name;
+
+    const p2 = document.createElement("p");
+    p2.textContent = "₹" +i.costPerHead;
+
+    advtext1.appendChild(p1);
+    advtext1.appendChild(p2);
+
+
+    let advtext2 = document.createElement("div");
+    advtext2.setAttribute("class","d-flex justify-content-between p-2");
+
+    const p3 = document.createElement("p");
+    p3.textContent = "Duration";
+
+    const p4 = document.createElement("p");
+    p4.textContent = i.duration+" Hours";
+
+    
+
+    advtext2.append(p3);
+    advtext2.append(p4);
+
+    advtext.appendChild(advtext1);
+    advtext.appendChild(advtext2);
+    console.log(advtext);
+
+    advcard.appendChild(advimg);
+    advcard.appendChild(advtext);
+    advcard.appendChild(advcategory);
+
+    link.appendChild(advcard);
+    division.appendChild(link);
+
+    
+    row.appendChild(division);
+    //console.log(row);
+
+  }
+
+ 
+
+
   
 
 
