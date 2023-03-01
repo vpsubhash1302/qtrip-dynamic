@@ -17,7 +17,7 @@ async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
   
-  const url = 'http://13.126.104.35:8082/adventures?city='+city;
+  const url = 'http://13.234.72.63:8082/adventures?city='+city;
   try{
     const response = await fetch(url);
     const users = await response.json();
@@ -143,11 +143,11 @@ function filterFunction(list, filters) {
   const highInt = parseInt(arr[1]);
 
   if(filters["duration"].length>0){
-    return filterByDuration(list, lowInt, highInt);
+    list = filterByDuration(list, lowInt, highInt);
   }
 
   if(filters["category"].length>0){
-    return filterByCategory(list, filters["category"]);
+    list= filterByCategory(list, filters["category"]);
   }
 
 

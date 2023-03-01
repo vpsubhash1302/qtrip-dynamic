@@ -15,7 +15,7 @@ async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
   try{
-    const response = await fetch('http://13.126.104.35:8082/cities');
+    const response = await fetch('http://13.234.72.63:8082/cities');
     const users = await response.json();
     return users;
    }catch(error){
