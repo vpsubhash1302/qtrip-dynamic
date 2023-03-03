@@ -17,13 +17,13 @@ async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
   
-  const url = 'http://13.234.72.63:8082/adventures?city='+city;
+  const url = config.backendEndpoint+"/adventures?city="+city;
   try{
     const response = await fetch(url);
     const users = await response.json();
     return users;
    }catch(error){
-     console.error("Error Found",error);
+     //console.error("Error Found",error);
      return null; 
    }
 
